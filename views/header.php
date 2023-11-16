@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -69,10 +69,10 @@
             </style>
             <div class="slideshow">
                 <div class="slide">
-                    <img src="../image/slideshow12.jpg" alt="Image 3">
+                    <img src="image/slideshow12.jpg" alt="Image 3">
                 </div>
                 <div class="slide">
-                    <img src="../image/slideshow11.jpg" alt="Image 2">
+                    <img src="image/slideshow11.jpg" alt="Image 2">
                 </div>
 
 

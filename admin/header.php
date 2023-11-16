@@ -4,21 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="">
+    <title>Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <div class="container">
-        <div class="row mb headermin">
-            <h1>QUẢN LÝ WEBSITE</h1>
+        <div class="row mb">
+            <div class=" row mb headeradmin">
+                <h1>ADMIN</h1>
+            </div>
         </div>
         <div class="row mb menu">
             <ul>
-                <li><a href="../index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=adddm">Danh mục</a></li>
-                <li><a href="index.php?act=addsp">Hàng hóa</a></li>
-                <li><a href="index.php?act=dskh">Quản Lý Đơn Hàng</a></li>
-                <li><a href="index.php?act=dsbl">Bình luận</a></li>
-                <li><a href="index.php?act=thongke">Thống kê Đơn Hàng</a></li>
+                <li><a href="index.php">Trang Chủ</a></li>
+                <li><a href="index.php?act=adddm">Danh Mục</a></li>
+                <li><a href="index.php?act=addsp">Hàng Hóa</a></li>
+                <li><a href="index.php?act=dskh">Khách Hàng</a></li>
+                <li><a href="index.php?act=dsbl">Bình Luận</a></li>
+                <li><a href="index.php?act=thongke">Thống Kê</a></li>
             </ul>
         </div>
+
+</body>
+
+</html>

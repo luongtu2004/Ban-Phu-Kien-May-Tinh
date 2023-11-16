@@ -1,1 +1,1 @@
-<h1>control paner</h1>
+<h1>Xin chào</h1>

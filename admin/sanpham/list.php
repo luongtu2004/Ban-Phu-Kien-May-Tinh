@@ -1,59 +1,77 @@
-<div class="row headermin">
-            <h2>DANH SÁCH SẢN PHẨM</h2>
+<div class="row">
+    <div class="row formtetel mb">
+        <h1>DANH SÁCH LOẠI HÀNG HÓA</h1>
+    </div>
+
+    <form action="index.php?act=listsp" method="POST">
+        <input type="text" name="kyw">
+        <select name="iddm">
+            <option value="0" selected>Tất Cả</option>
+            <?php
+            foreach ($listdanhmuc as $danhmuc) {
+                extract($danhmuc);
+                echo '<option value="' . $danhmuc_id . '">"' . $name_danhmuc . '"</option>';
+            }
+            ?>
+        </select>
+        <input type="submit" name="listok" value="Thêm sản phẩm vào">
+    </form>
+    <div class="row frmcontent">
+
+        <div class="row mb10 frmdanhsachloai">
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>MÃ LOẠI</th>
+                    <th>TÊN SẢN PHẨM</th>
+                    <th>HÌNH ẢNH</th>
+                    <th>MÔ TẢ</th>
+                    <th>GIÁ</th>
+                    <th>IDDM</th>
+                    <th>BRANDID</th>
+                    <th></th>
+                </tr>
+                <?php
+                foreach ($listsanpham as $sanpham) {
+                    extract($sanpham);
+                    $suasp = "index.php?act=suasp&id=" . $product_id;
+                    $xoasp = "index.php?act=xoasp&id=" . $product_id;
+                    $hinhpath = "../upload/" . $img;
+                    if (is_file($hinhpath)) {
+                        $hinh = "<img src='" . $hinhpath . "' height='80'>";
+                    } else {
+                        $hinh = "Chưa có hình";
+                    }
+                    echo '<tr>
+                                <td><input type="checkbox" name="" id=""></td>
+                                <td>' . $product_id . '</td>
+                                <td>' . $name . '</td>
+                                <td>' . $hinh . '</td>
+                                <td>' . $mota . '</td>
+                                <td>' . $price . '</td>
+                                <td>' . $iddm . '</td>
+                                <td>' . $brand_id . '</td>
+                                <td>
+                                    <a href="' . $suasp . '"> <input type="button" value="SỬA"></a>  
+                                    <a href="'.$xoasp.'" onclick="return confirm('."'Bạn có muốn xóa không?'".');"><input type="button" value="XÓA" ></a> 
+                                </td>
+                            </tr>';
+                            
+                }
+                ?>
+            </table>
         </div>
-        <form action="index.php?act=listsp" method="post">
-                        <input type="text" name="kyw" placeholder="nhập tên sản phẩm">
-                        <select name="iddm">
-                        <option value="0" selected >-----Chọn danh mục-----</option>
-                        <?php foreach($listdm as $danhmuc):?>
-                            <?php extract($danhmuc)?>
-                            <option value="<?=$id?>"><?= $name?></option>
-                       <?php endforeach ?>
-                    </select>
-                    <input type="submit" name="listok" value="Tìm kiếm">
-                    </form>
-        <div class="row formtl">
-                <div class="row mb1 formdslh">
-                   <table>
-                    <tr>
-                        <th></th>
-                        <th>MÃ LOẠI</th>
-                        <th>TÊN LOẠI</th>
-                        <th>PRICE</th>
-                        <th>HÌNH ẢNH</th>
-                        <th>VIEW</th>
-                        <th colspan="2"></th>
-                    </tr>
-                    
-                    <?php 
-                        foreach ($listsp as $sanpham) {
-                            extract($sanpham);
-                            $suasp = "index.php?act=suasp&id=".$id;
-                            $xoasp = "index.php?act=xoasp&id=".$id;
-                            $upimg = "../uploads/".$img;
-                            if(is_file($upimg)){
-                                $upanh = "<img src='".$upimg."'height ='50px'>";
-                            }
-                            echo 
-                            '<tr>
-                            <td><input type="checkbox"></td>
-                            <td>'.$id.'</td>
-                            <td>'.$namesp.'</td>
-                            <td>'.$price.'</td>
-                            <td>'.$upanh.'</td>
-                            <td>'.$view.'</td>
-                            <td> <a href="'.$suasp.'"><input type="button" value="Sửa"></a>
-                                 <a href="'.$xoasp.'"><input type="button" value="Xóa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')"></a>
-                            </td>
-                        </tr>';
-                        }
-                    ?>
-                   </table>
-                </div>
-                <div class="row mb">
-                    <input type="button" value="Chọn tất cả">
-                    <input type="button" value="Bỏ chọn tất cả">
-                    <input type="button" value="Xóa các mục đã chọn">
-                   <a href="index.php?act=addsp"><input type="button" value="Nhập thêm"></a>
-                </div>
+        <div class="row mb10">
+            <input type="button" value="Chọn tất cả">
+            <input type="button" value="Bỏ chọn tất cả">
+            <input type="button" value="Xóa các mục đã chọn">
+            <a href="index.php?act=addsp"  ><input type="button" value="Nhập thêm"></a>
         </div>
+    </div>
+</div>
+<script>
+function myFunction() {
+  confirm("Bạn có muốn xóa không !");
+}
+</script>

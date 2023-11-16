@@ -1,6 +1,6 @@
 <?php
-    function insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm,$brand_id ){
-        $sql = "insert into product(name,mota,price,iddm,brand_id) values('$tensp','$mota','$giasp','$hinh','$iddm','$brand_id')";
+    function insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm, $brand_id ){
+        $sql = "insert into product(name,mota,price,img,iddm,brand_id) values('$tensp','$mota','$giasp','$hinh','$iddm','$brand_id')";
         pdo_execute($sql);
     }
     function xoa_sanpham($product_id){
@@ -15,7 +15,7 @@
     // }
     function loadall_sanpham_home(){
         
-        $sql = "select * from  product order by product_id desc limit 0,9 ";
+        $sql = "select * from  product order by product_id desc limit 0,16 ";
         $listsanpham= pdo_query($sql);
         return $listsanpham;
     }
@@ -27,7 +27,7 @@
         if($iddm>0){
             $sql.=" and iddm ='".$iddm."'";
         }
-        $sql.=" order by id desc";
+        $sql.=" order by product_id desc";
         $listsanpham= pdo_query($sql);
         return $listsanpham;
     }
@@ -42,19 +42,19 @@
         }
     }   
     function loadone_sanpham($id){
-        $sql ="select * from sanpham where id=".$id;
+        $sql ="select * from product where id=".$id;
         $sp= pdo_query_one($sql);
         return $sp;
     }   
     function loadone_sanpham_cungloai($id,$iddm){
-        $sql ="select * from sanpham where iddm=".$iddm." AND id <>".$id;
+        $sql ="select * from product where iddm=".$iddm." AND id <>".$id;
         $listsanpham= pdo_query($sql);
         return $listsanpham;
     }
     function update_sanpham($id,$iddm,$tensp,$giasp,$motasp,$hinh){
         if($hinh!="")
-            $sql = "update sanpham set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$motasp."', img='".$hinh."' where id=".$id;
+            $sql = "update product set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$motasp."', img='".$hinh."' where id=".$id;
         else
-            $sql = "update sanpham set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$motasp."' where id=".$id;
+            $sql = "update product set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$motasp."' where id=".$id;
         pdo_execute($sql);
     }
