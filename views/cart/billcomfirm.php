@@ -17,9 +17,8 @@
         <div class="boxtitle">THÔNG TIN ĐƠN HÀNG</div>
         <div class="row boxcontent" style="text-align: center;">
             <li>- Mã đơn hàng: DAM-<?=$bill['id'];?></li> 
-            <li>- Ngày đặt hàng: <?=$bill['ngaydathang'];?></li>
-            <li>- Tổng đơn hàng: <?=$bill['total'];?></li>
-            <li>- Phương thức thanh toán: <?=$bill['bill_pttt'];?></li>
+            <li>- Tổng đơn hàng: <?=$bill['total_bill'];?></li>
+            <li>- Phương thức thanh toán: <?=$bill['pttt'];?></li>
         </div>
     </div>
     <div class="row mb">
@@ -30,21 +29,16 @@
 
                 <tr>
                     <td>Người đặt hàng</td>
-                    <td><?=$bill['bill_name'];?></td>
-                </tr>
-                <tr>
-                    <td>Địa chỉ</td>
-                    <td><?=$bill['bill_address'];?></td>
+                    <td><?=$bill['user_name'];?></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><?=$bill['bill_email'];?></td>
+                    <td><?=$bill['email'];?></td>
                 </tr>
                 <tr>
                     <td>Điện thoại</td>
-                    <td><?=$bill['bill_tel'];?></td>
+                    <td><?=$bill['phone'];?></td>
                 </tr>
-
             </table>
 
         </div>

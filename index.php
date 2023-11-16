@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include "model/pdo.php";
 include "model/danhmuc.php";
 include "model/sanpham.php";
@@ -35,18 +36,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include './views/sanpham.php';
             break;
 
-        case 'sanphamct':
-            if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
-                $product_id = $_GET['idsp'];
-                $onesp = loadone_sanpham($product_id);
-                extract($onesp);
-                $sp_cung_loai = loadone_sanpham_cungloai($product_id, $iddm);
-                extract($onesp);
-                include "views/sanphamct.php";
-            } else {
-                include "views/home.php";
-            }
-            break;
+        // case 'sanphamct':
+        //     if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
+        //         $product_id = $_GET['idsp'];
+        //         $onesp = loadone_sanpham($product_id);
+        //         extract($onesp);
+        //         $sp_cung_loai = loadone_sanpham_cungloai($product_id, $iddm);
+        //         extract($onesp);
+        //         include "views/sanphamct.php";
+        //     } else {
+        //         include "views/home.php";
+        //     }
+        //     break;
         // case 'dangky':
         //     if (isset($_POST['dangky']) && ($_POST['dangky'])) {
         //         $email = $_POST['email'];
@@ -100,10 +101,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         //     }
         //     include "view/taikhoan/quenmk.php";
         //     break;
-        case 'thoat':
-            session_unset();
-            header('Location: index.php');
-            break;
+        // case 'thoat':
+        //     session_unset();
+        //     header('Location: index.php');
+        //     break;
         case 'addtocart':
             //add thông tin sp từ cái form add to cart đến session
             if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
@@ -124,7 +125,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }else{
                 $_SESSION['mycart']=[];
             }
-            header('Location : ..index.php?act=viewcart');
+            header('Location: http://localhost/index.php?act=viewcart');
             break;
         case 'viewcart':
             include "views/cart/viewcart.php";
@@ -134,26 +135,26 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'billcomfirm':
             if(isset($_POST['dongydathang'])&&($_POST['dongydathang'])){
-                $name=$_POST['name'];
+                $user_name=$_POST['name'];
                 $email=$_POST['email'];
-                $address=$_POST['address'];
-                $tel=$_POST['tel'];
+                $phone=$_POST['tel'];
                 $pttt=$_POST['pttt'];
                 $ngaydathang=date('h:i:sa d/m/Y');
-                $tongdonhang=tongdonhang();
+                $total_bill=tongdonhang();
 
-                $idbill=insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang);
+                $id_bill=insert_bill($user_name,$email,$phone,$pttt,$total_bill);
 
                 foreach ($_SESSION['mycart'] as $cart) {
-                    insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                    // array(6) { [0]=> string(1) "4" [1]=> string(81) "Mainboard Asus ROG STRIX Z690-E Gaming wifi ( LGA 1200 - ATX Form Factor - DDR4 )" [2]=> string(12) "sanpham1.png" [3]=> string(7) "9999000" [4]=> int(1) [5]=> int(9999000) }
+                    insert_cart($cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$id_bill);
                 }
 
                 $_SESSION['cart']=[];
 
             }
-            $bill=loadone_bill($idbill);
-            $billct=loadall_cart($idbill);
-            include "view/cart/billcomfirm.php";
+            $bill=loadone_bill($id_bill);
+            $billct=loadall_cart($id_bill);
+            include "views/cart/billcomfirm.php";
             break;
         // case 'gioithieu':
         //     include "view/gioithieu.php";

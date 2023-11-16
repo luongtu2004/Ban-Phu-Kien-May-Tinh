@@ -23,6 +23,6 @@
     }
 
     function update_danhmuc($tenloai, $danhmuc_id){
-        $sql = "update danhmuc set name='".$tenloai."' where danhmuc_id=".$danhmuc_id;
+        $sql = "update danhmuc set name_danhmuc='".$tenloai."' where danhmuc_id=".$danhmuc_id;
         pdo_execute($sql);
     }

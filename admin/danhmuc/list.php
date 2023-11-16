@@ -20,7 +20,8 @@
                                 <td><input type="checkbox" name="" id=""></td>
                                 <td>' . $danhmuc_id . '</td>
                                 <td>' . $name_danhmuc . '</td>
-                                <td><a href="' . $suadm . '"> <input type="button" value="SỬA"></a>  <a href="' . $xoadm . '"> <input type="button" value="XÓA"></a> </td>
+                                <td><a href="' . $suadm . '"> <input type="button" value="SỬA"></a>  
+                                <a href="' . $xoadm . '" onclick="return confirm('."'Bạn có muốn xóa không?'".');"> <input type="button" value="XÓA"></a> </td>
                             </tr>';
                 }
                 ?>

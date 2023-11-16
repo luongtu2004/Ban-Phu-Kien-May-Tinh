@@ -37,12 +37,13 @@ if (isset($_GET['act'])) {
             break;
 
         case 'suadm':
-            if (isset($_GET['danhmuc_id']) && ($_GET['danhmuc_id'] > 0)) {
-                $dm = loadone_danhmuc($_GET['danhmuc_id']);
-            }
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $dm = loadone_danhmuc($_GET['id']);
 
+            }
             include "danhmuc/updete.php";
             break;
+
 
         case 'updetedm':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
@@ -109,8 +110,6 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $sanpham = loadone_sanpham($_GET['id']);
             }
-            var_dump($sanpham);
-            die;
             $listdanhmuc = loadall_danhmuc();
             include "sanpham/updete.php";
             break;

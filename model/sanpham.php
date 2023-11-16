@@ -41,10 +41,10 @@
             return "";
         }
     }   
-    function loadone_sanpham($id){
-        $sql ="select * from product where id=".$id;
-        $sp= pdo_query_one($sql);
-        return $sp;
+    function loadone_sanpham($danhmuc_id){
+        $sql ="select * from product where danhmuc_id=".$danhmuc_id;
+        $sanpham= pdo_query_one($sql);
+        return $sanpham;
     }   
     function loadone_sanpham_cungloai($id,$iddm){
         $sql ="select * from product where iddm=".$iddm." AND id <>".$id;

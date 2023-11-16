@@ -22,9 +22,9 @@ if (is_file($hinhpath)) {
                     <option value="0" selected>Tất Cả</option>
                     <?php
                     foreach ($listdanhmuc as $danhmuc) {
-                        if ($iddm == $danhmuc['id']) $s = "selected";
+                        if ($iddm == $danhmuc['danhmuc_id']) $s = "selected";
                         else $s = "";
-                        echo '<option value="' . $danhmuc['id'] . '"' . $s . '>"' . $danhmuc['name'] . '"</option>';
+                        echo '<option value="' . $danhmuc['danhmuc_id'] . '"' . $s . '>' . $danhmuc['name_danhmuc'] . '</option>';
                     }
                     ?>
                 </select>
@@ -47,7 +47,7 @@ if (is_file($hinhpath)) {
 
             <div class="row mb10">
                 <label for="">Mô Tả</label><br>
-                <textarea name="motasp" cols="30" rows="10"><?= $mota ?></textarea>
+                <textarea name="mota" cols="30" rows="10"><?= $mota ?></textarea>
             </div>
 
             <div class="row mb10">

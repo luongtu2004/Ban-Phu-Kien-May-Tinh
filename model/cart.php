@@ -64,7 +64,7 @@ function bill_chi_tiet($listbill){
         <th>Thành Tiền</th>
     </tr>';
     foreach ($listbill as $cart) {
-        $hinh=$img_path.$cart['img'];
+        $hinh=$img_path.$cart['image'];
         $tong+=$cart['thanhtien'];
         echo '<tr>
             <td><img src="'.$hinh.'" alt="" height="80px"></td>
@@ -90,13 +90,13 @@ function tongdonhang(){
     return $tong;
 }
 
-function insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang){
-    $sql="insert into bill(bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
+function insert_bill($user_name,$email,$phone,$pttt,$total_bill){
+    $sql="insert into bill(user_name,email,phone,pttt,total_bill) values('$user_name','$email','$phone','$pttt','$total_bill')";
     return pdo_execute_return_lastInsertID($sql);
 }
 
-function insert_cart($iduser,$idpro,$img,$name,$price,$soluong,$thanhtien,$idbill){
-    $sql="insert into cart(iduser,idpro,img,name,price,soluong,thanhtien,idbill) values('$iduser','$idpro','$img','$name','$price','$soluong','$thanhtien','$idbill')";
+function insert_cart($idpro,$image,$name,$price,$soluong,$thanhtien,$id_bill){
+    $sql="insert into cart(idpro,image,name,price,soluong,thanhtien,id_bill) values('$idpro','$image','$name','$price','$soluong','$thanhtien','$id_bill')";
     pdo_execute($sql);
 }
 
@@ -105,8 +105,8 @@ function loadone_bill($id){
     $bill=pdo_query_one($sql);
     return $bill;
 }
-function loadall_cart($idbill){
-    $sql="select * from cart where idbill=".$idbill;
+function loadall_cart($id_bill){
+    $sql="select * from cart where id_bill=".$id_bill;
     $bill=pdo_query($sql);
     return $bill;
 }
