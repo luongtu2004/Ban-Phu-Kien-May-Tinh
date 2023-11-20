@@ -2,13 +2,11 @@
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
-include "../model/taikhoan.php";
+include "../model/users.php";
 include "../model/binhluan.php";
 include "../model/brand.php";
 include "../model/cart.php";
 include "header.php";
-
-
 
 if (isset($_GET['act'])) {
     $act  = $_GET['act'];
@@ -140,7 +138,7 @@ if (isset($_GET['act'])) {
             include "sanpham/list.php";
             break;
         case 'dskh':
-            $listtaikhoan = loadall_taikhoan();
+            $listtaikhoan = loadAll_tk();
             include "taikhoan/list.php";
             break;
         case 'dsbl':

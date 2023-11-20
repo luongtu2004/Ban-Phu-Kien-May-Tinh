@@ -7,12 +7,12 @@
         $sql = "delete from product where product_id=".$product_id;
         pdo_execute($sql);
     }
-    // function loadall_sanpham_top5(){
-    //     $sql = "select * from  product where 1 order by luotxem desc limit 0,5 ";
+    function loadall_sanpham_top5(){
+        $sql = "select * from  product where 1 order by product_id desc limit 0,5 ";
         
-    //     $listsanpham= pdo_query($sql);
-    //     return $listsanpham;
-    // }
+        $listsanpham= pdo_query($sql);
+        return $listsanpham;
+    }
     function loadall_sanpham_home(){
         
         $sql = "select * from  product order by product_id desc limit 0,16 ";
@@ -33,7 +33,7 @@
     }
     function load_ten_dm($iddm){
         if($iddm>0){
-            $sql ="select * from danhmuc where id=".$iddm;
+            $sql ="select * from danhmuc where danhmuc_id=".$iddm;
             $dm= pdo_query_one($sql);
             extract($dm);
             return $dm;
@@ -41,8 +41,8 @@
             return "";
         }
     }   
-    function loadone_sanpham($danhmuc_id){
-        $sql ="select * from product where danhmuc_id=".$danhmuc_id;
+    function loadone_sanpham($id){
+        $sql ="select * from product where product_id=".$id;
         $sanpham= pdo_query_one($sql);
         return $sanpham;
     }   
