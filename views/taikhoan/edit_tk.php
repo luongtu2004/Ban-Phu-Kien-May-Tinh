@@ -11,7 +11,7 @@
                 <form action="/index.php" method="post">
                     <div class="box-ttk">
                         Tên đăng nhập: <br>
-                        <input type="text" name="user_name" value="<?=$user_name?>">
+                        <input type="text" name="user_name" value="<?=$username?>">
                     </div>
                     <div class="box-ttk">
                         Mật Khẩu <br>

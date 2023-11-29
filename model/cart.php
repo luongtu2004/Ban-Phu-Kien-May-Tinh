@@ -59,11 +59,9 @@
 
     function loadall_thongke()
     {
-        $sql = "SELECT danhmuc.id as madm, danhmuc.name as tendm, COUNT(sanpham.id) as countsp, MIN(sanpham.price) as minprice, MAX(sanpham.price) as maxprice, AVG(sanpham.price) as avgprice ";
-        $sql .= "FROM sanpham LEFT JOIN danhmuc ON danhmuc.id=sanpham.iddm ";
-        $sql .= "GROUP BY danhmuc.id ORDER BY danhmuc.id DESC";
-        $listthongke = pdo_query($sql);
-        return $listthongke;
+        $sql = "select * from  bill order by id desc";
+        $listbill= pdo_query($sql);
+        return $listbill;
     }
 
     function viewcart($del)
@@ -144,6 +142,54 @@
             <td>' . $tong . '</td>
         </tr>';
     }
+    function bill_don_hang($listbill)
+    {
+
+        global $img_path;
+        $tong = 0;
+        $i = 0;
+
+        echo '<tr>
+            <th>Mã Đơn Hàng</th>
+            <th>Hình</th>
+            <th>Sản Phẩm</th>
+            <th>Đơn Giá</th>
+            <th>Số Lượng</th>
+            <th>Ngày Đặt Hàng</th>
+            <th>Phương Thức Thanh Toán</th>
+            <th>Thành Tiền</th>
+        </tr>';
+
+        foreach ($listbill as $bill) {
+            $hinh = $img_path . $bill['image'];
+            $tong += $bill['thanhtien'];
+            $pttt =null;
+            if($bill['bill_pttt'] == 1){
+                $pttt= 'Thanh Toán Trực Tiếp';
+            }else if($bill['bill_pttt']==2){
+                $pttt= 'Chuyển Khoản';
+            }else{
+                $pttt= 'Thanh Toán Online';
+            }
+            echo '<tr>
+                <td>DAM-' . $bill['MaDonHang'] . '</td>
+                <td><img src="' . $hinh . '" alt="" height="80px"></td>
+                <td>' . $bill['name'] . '</td>
+                <td>' . $bill['price'] . '</td>
+                <td>' . $bill['soluong'] . '</td>
+                <td>' . $bill['ngaydathang'] . '</td>
+                <td>' . $pttt .  '</td>
+                <td>' . $bill['thanhtien'] . '</td>
+            </tr>';
+
+            $i += 1;
+        }
+
+        echo '<tr>
+            <td colspan="4">Tổng đơn hàng</td>
+            <td>' . $tong . '</td>
+        </tr>';
+    }
 
     function tongdonhang()
     {
@@ -157,9 +203,14 @@
         return $tong;
     }
 
-    function insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang){
-        $sql="insert into bill(bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
+    function insert_bill($user_id,$name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang){
+        $sql="insert into bill(user_id,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$user_id','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
         return pdo_execute_return_lastInsertID($sql);
+    }
+    function load_bill(){
+        $sql=" SELECT bill.id as MaDonHang, cart.image, cart.name, cart.price, cart.soluong, bill.ngaydathang, bill.bill_pttt, cart.thanhtien FROM cart INNER JOIN bill ON cart.id_bill = bill.id WHERE bill.user_id =". $_SESSION['users']['id'];
+        $bill = pdo_query($sql);
+        return $bill;
     }
 
     function insert_cart($idpro, $image, $name, $price, $soluong, $thanhtien, $id_bill)

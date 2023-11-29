@@ -65,7 +65,7 @@ text-decoration: underline;
                 <td><input type="text" name="username" placeholder="Tên đăng nhập"></td>
             </tr>
             <tr>
-                <td><input type="number" name="sdt" placeholder="Số Điện Thoại"></td>
+                <td><input type="text" name="sdt" placeholder="Số Điện Thoại"></td>
             </tr>
             <tr>
                 <td><input type="email" name="email" placeholder="email"></td>

@@ -74,7 +74,7 @@
                     $i = 0;
                     foreach ($dssp as $sp) {
                         extract($sp);
-                        $linksp = "index.php?act=sanphamct&idsp=" . $product_id;
+                        $linksp = "index.php?act=chitietsanpham&product_id=" . $product_id;
                         $hinh = $img_path . $img;
                         if (($i == 2) || ($i == 5) || ($i == 8) || ($i == 11)) {
                             $mr = "";
@@ -85,7 +85,7 @@
                            <div class="boxsanpham1 ' . $mr . '">
                             <div class="row img"><a href="' . $linksp . '"><img src="' . $hinh . '" alt=""></a></div>
                             <p>' . $price . '</p>
-                            <p>' . $mota . '</p>
+                            
                             <a href="' . $linksp . '">' . $name . '</a>
                             </div>
                             <div class="btnaddtocart">
@@ -93,7 +93,6 @@
                                 <input type="hidden" name="product_id" value="' . $product_id . '">
                                 <input type="hidden" name="name" value="' . $name . '">
                                 <input type="hidden" name="img" value="' . $img . '">
-                                <input type="hidden" name="mota" value="' . $mota . '">
                                 <input type="hidden" name="price" value="' . $price . '">
                                 <input type="submit" name="addtocart" value="Thêm vào giỏ hàng">
                             </form>

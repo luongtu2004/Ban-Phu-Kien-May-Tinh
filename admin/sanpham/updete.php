@@ -51,7 +51,7 @@ if (is_file($hinhpath)) {
             </div>
 
             <div class="row mb10">
-                <input type="hidden" name="id" value="<?= $id ?>">
+                <input type="hidden" name="id" value="<?= $product_id ?>">
                 <input type="submit" name="capnhat" value="CẬP NHẬT">
                 <input type="reset" value="NHẬP LẠI">
                 <a href="index.php?act=listsp"><input type="button" value="DANH SÁCH"></a>

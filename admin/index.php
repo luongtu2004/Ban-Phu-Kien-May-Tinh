@@ -7,6 +7,11 @@ include "../model/binhluan.php";
 include "../model/brand.php";
 include "../model/cart.php";
 include "header.php";
+session_start();
+
+if(!isset($_SESSION['users']) || $_SESSION['users']['role'] != 1){
+    header('Location: http://localhost/index.php');
+}
 
 if (isset($_GET['act'])) {
     $act  = $_GET['act'];
@@ -119,7 +124,7 @@ if (isset($_GET['act'])) {
                 $iddm = $_POST['iddm'];
                 $tensp = $_POST['tensp'];
                 $giasp = $_POST['giasp'];
-                $motasp = $_POST['motasp'];
+                $mota = $_POST['mota'];
                 $hinh = $_FILES['hinhsp']['name'];
                 // var_dump($_FILES);die;
                 $targer_dir = "../upload/";
@@ -130,7 +135,7 @@ if (isset($_GET['act'])) {
                 } else {
                     // echo "Sorry, there was an error uploading your file.";
                 }
-                update_sanpham($id, $iddm, $tensp, $giasp, $motasp, $hinh);
+                update_sanpham($id, $iddm, $tensp, $giasp, $mota, $hinh);
                 $thongbao = "Cập nhật thành công";
             }
             $listdanhmuc = loadall_danhmuc();
@@ -153,7 +158,7 @@ if (isset($_GET['act'])) {
             include "binhluan/list.php";
             break;
         case 'thongke':
-            $listthongke = loadall_thongke();
+            $listbill = loadall_thongke();
             include "thongke/list.php";
             break;
 

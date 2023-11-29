@@ -5,8 +5,6 @@
             <div class="title-cart">GIỎ HÀNG</div>
             <div class="row boxcontent cart">
                 <table>
-
-
                     <?php
                     viewcart(0);
                     ?>

@@ -57,11 +57,11 @@
                         <table>
 
                             <?php
-                            if (isset($_SESSION['user'])) {
-                                $name = $_SESSION['user']['name'];
-                                $address = $_SESSION['user']['address'];
-                                $email = $_SESSION['user']['email'];
-                                $tel = $_SESSION['user']['tel'];
+                            if (isset($_SESSION['users'])) {
+                                $name = $_SESSION['users']['username'];
+                                $address = $_SESSION['users']['address'];
+                                $email = $_SESSION['users']['email'];
+                                $tel = $_SESSION['users']['phone'];
                             } else {
                                 $name = "";
                                 $address = "";
@@ -97,9 +97,9 @@
                         <table>
 
                             <tr>
-                                <td><input type="radio" name="pttt" checked>Trả tiền khi nhận hàng</td>
-                                <td><input type="radio" name="pttt">Chuyển khoản ngân hàng</td>
-                                <td><input type="radio" name="pttt">Thanh toán online</td>
+                                <td><input type="radio" name="pttt" checked value="1">Trả tiền khi nhận hàng</td>
+                                <td><input type="radio" name="pttt" value="2">Chuyển khoản ngân hàng</td>
+                                <td><input type="radio" name="pttt" value="3">Thanh toán online</td>
                             </tr>
                         </table>
 

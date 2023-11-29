@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="row formtetel">
+    <div class="title-danhmuc">
         <h1>THÊM MỚI LOẠI HÀNG HÓA</h1>
     </div>
     <div class="row frmcontent">

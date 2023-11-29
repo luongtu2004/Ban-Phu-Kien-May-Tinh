@@ -7,18 +7,16 @@ if (isset($_SESSION['users'])) {
         <div class="title-login">TÀI KHOẢN</div>
         <div class="form-login">
             Xin chào <br>
-            <?= $user_name ?> &nbsp;|&nbsp;<a href="../index.php?act=logout">Đăng xuất</a>
-
-            <?php if (isset($role) && $role != 0) { ?>
-                <li>
-                    <a href="../admin/index.php">Đăng nhập admin</a>
-                </li>
-            <?php } else { ?>
-
-            <?php } ?>
+            <?= $username ?> &nbsp;|&nbsp;<a href="../index.php?act=logout">Đăng xuất</a>
+            <?php
+            if (isset($role) && $role == 1) {
+                echo '<li> <a href="../admin/index.php">Đăng nhập admin</a> </li>';
+            }
+            ?>
             <div class="row mb">
                 <li>
                     <a href="index.php?act=edit_tk">Cập nhật thông tin tài khoản</a>
+                    <a href="index.php?act=lsmh">Lịch sử mua hàng</a>
                 </li>
             </div>
         </div>
@@ -29,7 +27,7 @@ if (isset($_SESSION['users'])) {
     <div class="login">
         <div class="title-login">TÀI KHOẢN</div>
         <div class="form-login">
-            <form action="../index.php" method="post">
+            <form action="index.php?act=dangnhap" method="post">
                 <div class="login-1">
                     Tên đăng nhập <br>
                     <input type="text" name="user_name"><br>
@@ -53,9 +51,6 @@ if (isset($_SESSION['users'])) {
             </li>
             <li>
                 <a href="../index.php?act=users">Đăng kí thành viên</a>
-            </li>
-            <li>
-                <a href="/admin/index.php">Đăng Nhập Với Quản Trị</a>
             </li>
         </div>
 

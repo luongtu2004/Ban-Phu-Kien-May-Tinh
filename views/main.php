@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="main-chinh">
@@ -70,7 +70,7 @@
                             <?php
                             foreach ($dstop5 as $sp) {
                                 extract($sp);
-                                $linksp = "index.php?act=sanphamct&idsp=" . $product_id;
+                                $linksp = "index.php?act=chitietsanpham&product_id=" . $product_id;
                                 $img = $img_path . $img;
                                 echo '<div class="main-favorite">
                                 <a href="' . $linksp . '"><img src="' . $img . '" alt=""></a>
@@ -93,7 +93,7 @@
                     $i = 0;
                     foreach ($spnew as $sp) {
                         extract($sp);
-                        $linksp = "index.php?act=sanphamct&idsp=" . $product_id;
+                        $linksp = "index.php?act=chitietsanpham&product_id=" . $product_id;
                         $hinh = $img_path . $img;
                         if (($i == 2) || ($i == 5) || ($i == 8)) {
                             $mr = "";
@@ -104,15 +104,13 @@
                            <div class="boxsanpham1 ' . $mr . '">
                             <div class="row img"><a href="' . $linksp . '"><img src="' . $hinh . '" alt=""></a></div>
                             <p>' . $price . '</p>
-                            <p>' . $mota . '</p>
-                            <a href="' . $linksp . '">' . $name . '</a>
+                             <a href="' . $linksp . '">' . $name . '</a>
                             </div>
                             <div class="btnaddtocart">
                             <form action= "index.php?act=addtocart" method= "post">
                                 <input type="hidden" name="product_id" value="' . $product_id . '">
                                 <input type="hidden" name="name" value="' . $name . '">
                                 <input type="hidden" name="img" value="' . $img . '">
-                                <input type="hidden" name="mota" value="' . $mota . '">
                                 <input type="hidden" name="price" value="' . $price . '">
                                 <input type="submit" name="addtocart" value="Thêm vào giỏ hàng">
                             </form>

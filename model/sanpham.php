@@ -1,6 +1,6 @@
 <?php
-    function insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm, $brand_id ){
-        $sql = "insert into product(name,mota,price,img,iddm,brand_id) values('$tensp','$mota','$giasp','$hinh','$iddm','$brand_id')";
+    function insert_sanpham($tensp, $giasp, $hinh, $iddm, $brand_id ){
+        $sql = "insert into product(name,price,img,iddm,brand_id) values('$tensp','$giasp','$hinh','$iddm','$brand_id')";
         pdo_execute($sql);
     }
     function xoa_sanpham($product_id){
@@ -51,10 +51,16 @@
         $listsanpham= pdo_query($sql);
         return $listsanpham;
     }
-    function update_sanpham($id,$iddm,$tensp,$giasp,$motasp,$hinh){
-        if($hinh!="")
-            $sql = "update product set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$motasp."', img='".$hinh."' where id=".$id;
-        else
-            $sql = "update product set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$motasp."' where id=".$id;
-        pdo_execute($sql);
+    function update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh){
+        if($hinh!=""){
+            $sql = "update product set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$mota."', img='".$hinh."' where product_id=".$id;
+        }else{
+            $sql = "update product set iddm='".$iddm."', name='".$tensp."',  price='".$giasp."', mota='".$mota."' where product_id=".$id;
+        }
+            pdo_execute($sql);
+    }
+    function chi_tiet_product($id){
+        $sql = "select *from product where product_id=$id";
+        $sanpham= pdo_query_one($sql);
+        return $sanpham;
     }

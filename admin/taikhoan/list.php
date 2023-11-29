@@ -24,11 +24,11 @@
                     echo '<tr>
                                 <td><input type="checkbox" name="" id=""></td>
                                 <td>' . $id . '</td>
-                                <td>' . $user . '</td>
-                                <td>' . $pass . '</td>
+                                <td>' . $username . '</td>
+                                <td>' . $password . '</td>
                                 <td>' . $email . '</td>
                                 <td>' . $address . '</td>
-                                <td>' . $tel . '</td>
+                                <td>' . $phone . '</td>
                                 <td>' . $role . '</td>
                                 <td><a href="' . $suatk . '"> <input type="button" value="SỬA"></a>  <a href="' . $xoatk . '"> <input type="button" value="XÓA"></a> </td>
                             </tr>';
@@ -40,7 +40,6 @@
             <input type="button" value="Chọn tất cả">
             <input type="button" value="Bỏ chọn tất cả">
             <input type="button" value="Xóa các mục đã chọn">
-            <a href="index.php?act=adddm"><input type="button" value="Nhập thêm"></a>
         </div>
     </div>
 </div>

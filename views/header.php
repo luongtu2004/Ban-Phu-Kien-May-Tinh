@@ -16,7 +16,7 @@
             <div class="logo-banner">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="../index.php"><img src="../image/logo.png" alt="" ></a>
+                    <a href="../index.php"><img src="../image/logo.png" alt=""></a>
                 </div>
                 <!-- Search -->
                 <div class="search">
@@ -28,7 +28,18 @@
                         <ul>
                             <li><a href="index.php?act=bill"><i class="material-icons">credit_card</i> Thanh Toán</a></li>
                             <li><a href="index.php?act=addtocart"><i class="material-icons">shopping_cart</i> Giỏ Hàng</a></li>
-                            <li><a href="../views/login.php"><i class="material-icons">person</i>Đăng Nhập</a></li>
+                            <li>
+                                <a href="index.php?act=dangnhap">
+                                    <i class="material-icons">person</i>
+                                    <?php
+                                    if (isset($_SESSION['users'])) {
+                                        echo ($_SESSION['users']['username']);
+                                    } else {
+                                        echo ('Đăng Nhập');
+                                    }
+                                    ?>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -38,13 +49,13 @@
             <div class="menu">
                 <ul>
                     <li><a href="../index.php">Trang Chủ</a></li>
-                    <li><a href="#">CPU</a></li>
-                    <li><a href="#">RAM</a></li>
-                    <li><a href="#">Tai Nghe</a></li>
-                    <li><a href="#">Chuột</a></li>
-                    <li><a href="#">Bàn Phím</a></li>
-                    <li><a href="#">Tin Tức</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
+                    <li><a href="index.php?act=gioithieu">Giới Thiệu</a></li>
+                    <li><a href="index.php?act=sanpham&iddm=1">CPU</a></li>
+                    <li><a href="index.php?act=sanpham&iddm=2">RAM</a></li>
+                    <li><a href="index.php?act=sanpham&iddm=3">Tai Nghe</a></li>
+                    <li><a href="index.php?act=sanpham&iddm=6">Ổ Cúng</a></li>
+                    <li><a href="index.php?act=sanpham&iddm=4">Mainboard</a></li>
+                    <li><a href="index.php?act=lienhe">Liên Hệ</a></li>
 
                 </ul>
             </div>
